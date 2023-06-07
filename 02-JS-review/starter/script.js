@@ -142,3 +142,163 @@ function getBooks() {
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
+
+// DESTRUCTURING
+/*
+const book = getBook(3);
+const {
+  title,
+  author,
+  pages,
+  publicationDate,
+  gneres,
+  hasMovieAdaptation,
+  genres,
+} = book;
+
+genres;
+
+// const primaryGenre = genres[0];
+// const secondaryGenre = genres[1];
+
+// DESTRUCTURING
+const [primaryGenre, secondaryGenre, ...rest] = genres;
+primaryGenre;
+secondaryGenre;
+rest;
+
+// SPREAD - REST
+const newGenres = [...genres, "epic"];
+
+const updatedBook = {
+  ...book,
+  // Adding a new property
+  moviePublicationDate: "2001-12-19",
+  // Overwriting an existing property
+  pages: 1210,
+};
+updatedBook;
+
+// TEMPLATE LITERALS
+const summary = `${title} is a book with ${pages} pages, was written by ${author} and publish in ${
+  publicationDate.split("-")[0]
+}. The book has ${hasMovieAdaptation ? "" : "not"} been adapted as a movie.`;
+summary;
+
+// TERNARIES
+const pagesRange = pages > 1000 ? "Over a thousand" : "Less than 1000";
+pagesRange;
+
+// ARROW FUNCTIONS
+const getYear = (str) => str.split("-")[0];
+console.log(getYear(publicationDate));
+
+// SHORT CIRCUITING AND CONDITIONAL
+console.log(true && false);
+console.log(true || false);
+console.log(hasMovieAdaptation && "This book has a movie");
+
+// falsy: 0, "", null, undefined
+console.log("jonas" && "Some string");
+console.log(0 && "Some string");
+
+console.log("jonas" || "Some string");
+console.log(0 || "Some string");
+
+console.log(book.translations.spanish);
+
+const spanishTranslation = book.translations.spanish || "Not Translated";
+spanishTranslation;
+
+// console.log(book.reviews.librarything.reviewsCount);
+// const countWrong = book.reviews.librarything.reviewsCount ?? "no data";
+// countWrong; // 0
+*/
+// OPTIONAL CHAINING
+// const getTotalReviewCount = (book) => {
+//   const goodread = book.reviews?.goodreads?.reviewsCount ?? 0;
+//   const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+//   librarything;
+//   return goodread + librarything;
+// };
+
+// console.log(getTotalReviewCount(book));
+
+/*
+// MAP
+const books = getBooks();
+const names = books.map((book) => book?.title ?? "No title");
+names;
+
+const essentialData = books.map((book) => ({
+  title: book.title,
+  author: book.author,
+  // reviewsCount: getTotalReviewCount(book),
+}));
+essentialData;
+
+// FILTER
+const longBooksWithMovie = books
+  .filter((book) => book.pages > 1000)
+  .filter((book) => book.hasMovieAdaptation);
+longBooksWithMovie;
+
+const adventure = books
+  .filter((book) => book.genres.includes("adventure"))
+  .map((book) => book.title);
+adventure;
+
+// REDUCE
+const allPages = books.reduce((acc, book) => acc + book.pages, 0);
+allPages;
+
+// SORT
+const x = [3, 7, 1, 8, 5];
+const sorted = x.slice().sort((a, b) => a - b);
+// const sorted = x.toSorted((a, b) => a - b);
+sorted;
+x;
+const sortedByPage = books.slice().sort((a, b) => a.pages - b.pages);
+sortedByPage;
+
+// INMUTABLE ARRAYS
+// 1) Add book object to array
+const newBook = {
+  id: 6,
+  title: "Harry Potter and the Chamber of Secrets",
+  author: "J. K. Rowling",
+};
+const booksAfterAdd = [...books, newBook];
+
+// 2) Delete book object from Array
+const booksAfterDelete = booksAfterAdd.filter((book) => book.id !== 3);
+const booksIds = booksAfterDelete.map((book) => book.id);
+booksIds;
+
+// 3) Update a book object in the array
+const booksAfterUpdate = booksAfterDelete.map((book) =>
+  book.id === 1 ? { ...book, id: 3 } : book
+);
+const newBookIds = booksAfterUpdate.map((book) => book.id);
+newBookIds;
+*/
+
+// PROMISES
+
+fetch("https://jsonplaceholder.typicode.com/todos")
+  .then((res) => res.json())
+  .then((data) => console.log(data))
+  .catch((err) => console.log(err.message));
+
+// ASYNC AWAIT
+const response = await fetch("https://jsonplaceholder.typicode.com/todos");
+const fetchData = await response.json();
+fetchData;
+
+const getData = async function () {
+  const res = await fetch("https://jsonplaceholder.typicode.com/todos");
+  const data = await res.json();
+  data;
+};
+
+getData();
