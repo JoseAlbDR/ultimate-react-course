@@ -14,7 +14,7 @@ function App() {
 }
 
 function Header() {
-  const style = { color: "red", fontSize: "48px", textTransform: "uppercase" };
+  // const style = { color: "red", fontSize: "48px", textTransform: "uppercase" };
   // return <h1 style={style}>Fast React Pizza Co.</h1>;
   return (
     <header className="header">
@@ -28,12 +28,44 @@ function Menu() {
     <main className="menu">
       <h2>Our Menu</h2>
       <div className="pizzas">
-        <Pizza />
-        <Pizza />
-        <Pizza />
-        <Pizza />
+        <Pizza
+          name={pizzaData[0].name}
+          ingredients={pizzaData[0].ingredients}
+          photoName={pizzaData[0].photoName}
+          price={+pizzaData[0].price}
+        />
+        <Pizza
+          name={pizzaData[1].name}
+          ingredients={pizzaData[1].ingredients}
+          photoName={pizzaData[1].photoName}
+          price={+pizzaData[1].price}
+        />
+        <Pizza
+          name={pizzaData[2].name}
+          ingredients={pizzaData[2].ingredients}
+          photoName={pizzaData[2].photoName}
+          price={+pizzaData[2].price}
+        />
+        <Pizza
+          name={pizzaData[3].name}
+          ingredients={pizzaData[3].ingredients}
+          photoName={pizzaData[3].photoName}
+          price={+pizzaData[3].price}
+        />
       </div>
     </main>
+  );
+}
+
+function Pizza(props) {
+  console.log(props);
+  return (
+    <div className="pizza">
+      <img src={props.photoName} alt={props.name} />
+      <h3>{props.name}</h3>
+      <p>{props.ingredients}</p>
+      <span>{props.price + 3}€</span>
+    </div>
   );
 }
 
@@ -50,16 +82,6 @@ function Footer() {
     <footer className="footer">
       {new Date().toLocaleTimeString()}. {isOpen}
     </footer>
-  );
-}
-
-function Pizza() {
-  return (
-    <div className="pizza">
-      <img src={pizzaData[2].photoName} alt={pizzaData[2].name} />
-      <h3>{pizzaData[2].name}</h3>
-      <p>{pizzaData[2].ingredients}</p>
-    </div>
   );
 }
 
