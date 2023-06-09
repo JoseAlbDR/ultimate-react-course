@@ -16,6 +16,13 @@
   justify-content: center;
 }
 
+.container header {
+  color: #fff;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  padding: 20px;
+}
+
 span {
   border: 1px solid #fff;
   padding: 5px 10px;
