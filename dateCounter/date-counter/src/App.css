@@ -26,6 +26,8 @@ span {
 
 button {
   padding: 5px 10px;
+  border-radius: 50%;
+  border-color: #fff;
 }
 
 p {
