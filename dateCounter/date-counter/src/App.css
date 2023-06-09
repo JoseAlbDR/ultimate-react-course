@@ -1,0 +1,33 @@
+.App {
+  text-align: center;
+  margin: 100px auto;
+}
+
+.container {
+  background-color: mediumpurple;
+  padding: 10px;
+  width: 500px;
+  margin: 0 auto;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+span {
+  border: 1px solid black;
+  padding: 5px 10px;
+  margin: 10px;
+  background-color: blueviolet;
+  color: white;
+}
+
+button {
+  padding: 5px 10px;
+}
+
+p {
+  color: white;
+}
