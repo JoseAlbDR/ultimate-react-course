@@ -11,7 +11,9 @@ export default function Counter() {
 
   return (
     <div className="container">
-      <p>Show date based on count from Today.</p>
+      <p style={{ textTransform: "uppercase", fontSize: "1.2rem" }}>
+        Show date based on count from Today.
+      </p>
       <Step step={step} setStep={setStep} />
       <Count count={count} setCount={setCount} step={step} />
       <p>
