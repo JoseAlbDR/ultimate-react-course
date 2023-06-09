@@ -17,7 +17,9 @@ export default function Counter() {
       <p>
         {!count
           ? `Today is ${date.toDateString()}`
-          : `${count} days from today is ${date.toDateString()}`}
+          : `${count} days from today ${
+              count < 0 ? "was" : "is"
+            } ${date.toDateString()}`}
       </p>
     </div>
   );
