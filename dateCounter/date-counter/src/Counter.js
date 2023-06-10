@@ -29,7 +29,7 @@ export default function Counter() {
       </p>
 
       <button
-        className={`reset ${step >= 1 && count > 0 ? "" : "hidden"}`}
+        className={`reset ${step !== 1 || count !== 0 ? "" : "hidden"}`}
         onClick={handleReset}
       >
         Reset
