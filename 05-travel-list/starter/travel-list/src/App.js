@@ -115,6 +115,13 @@ function Item({ item, onDeleteItem, onUpdateItem }) {
 }
 
 function Stats({ items }) {
+  if (!items.length)
+    return (
+      <footer className="stats">
+        <em>No items yet.</em>
+      </footer>
+    );
+
   const packed = items.filter((item) => item.packed).length;
   const numItems = items.length;
   const percentage = Math.round((packed / numItems) * 100);
