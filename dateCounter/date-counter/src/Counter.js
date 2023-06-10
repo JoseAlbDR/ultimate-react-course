@@ -16,6 +16,7 @@ export default function Counter() {
 
   return (
     <div className="container">
+      <a href="https://jadr-datecounter.netlify.app/">Version 1.0</a>
       <header>Show date based on count from Today</header>
       <Step step={step} setStep={setStep} />
       <Count count={count} setCount={setCount} step={step} />
