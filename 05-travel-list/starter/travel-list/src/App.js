@@ -8,7 +8,6 @@ export default function App() {
   }
 
   function handleDeleteItem(id) {
-    console.log(id);
     setItems((items) => items.filter((item) => item.id !== id));
   }
 
@@ -19,6 +18,11 @@ export default function App() {
       )
     );
   }
+
+  function handleResetItems() {
+    setItems([]);
+  }
+
   // const initialItems = [
   //   { id: 1, description: "Passports", quantity: 2, packed: false },
   //   { id: 2, description: "Socks", quantity: 12, packed: true },
@@ -33,6 +37,7 @@ export default function App() {
         items={items}
         onDeleteItem={handleDeleteItem}
         onUpdateItem={handleUpdateItem}
+        onResetItems={handleResetItems}
       />
       <Stats items={items} />
     </div>
@@ -81,13 +86,14 @@ function Form({ onAddItems }) {
   );
 }
 
-function PackingList({ items, onDeleteItem, onUpdateItem }) {
+function PackingList({ items, onDeleteItem, onUpdateItem, onResetItems }) {
   const [sortBy, setSortBy] = useState("id");
 
   function onSortBy(e) {
     setSortBy(e.target.value);
   }
 
+  // Sort
   let sortedItems;
 
   if (sortBy === "id") sortedItems = items.slice();
@@ -110,7 +116,7 @@ function PackingList({ items, onDeleteItem, onUpdateItem }) {
           />
         ))}
       </ul>
-      <Sort sortBy={sortBy} onSortBy={onSortBy} />
+      <Sort sortBy={sortBy} onSortBy={onSortBy} onResetItems={onResetItems} />
     </div>
   );
 }
@@ -131,7 +137,7 @@ function Item({ item, onDeleteItem, onUpdateItem }) {
   );
 }
 
-function Sort({ sortBy, onSortBy }) {
+function Sort({ sortBy, onSortBy, onResetItems }) {
   return (
     <div className="actions">
       <select value={sortBy} onChange={(e) => onSortBy(e)}>
@@ -139,6 +145,7 @@ function Sort({ sortBy, onSortBy }) {
         <option value="description">Sort by description.</option>
         <option value="packed">Sort by packed status.</option>
       </select>
+      <button onClick={onResetItems}>Clear List</button>
     </div>
   );
 }
