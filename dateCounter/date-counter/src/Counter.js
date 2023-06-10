@@ -9,6 +9,11 @@ export default function Counter() {
   const date = new Date();
   date.setDate(date.getDate() + count);
 
+  function handleReset() {
+    setStep(1);
+    setCount(0);
+  }
+
   return (
     <div className="container">
       <header>Show date based on count from Today</header>
@@ -21,6 +26,13 @@ export default function Counter() {
               count < 0 ? "was" : "is"
             } ${date.toDateString()}`}
       </p>
+
+      <button
+        className={`reset ${step >= 1 && count > 0 ? "" : "hidden"}`}
+        onClick={handleReset}
+      >
+        Reset
+      </button>
     </div>
   );
 }
