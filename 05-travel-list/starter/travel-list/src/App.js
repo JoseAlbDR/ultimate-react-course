@@ -82,6 +82,12 @@ function Form({ onAddItems }) {
 }
 
 function PackingList({ items, onDeleteItem, onUpdateItem }) {
+  const [sortBy, setSortBy] = useState("input");
+
+  function onSortBy(e) {
+    setSortBy(e.target.value);
+  }
+
   return (
     <div className="list">
       <ul>
@@ -94,6 +100,7 @@ function PackingList({ items, onDeleteItem, onUpdateItem }) {
           />
         ))}
       </ul>
+      <Sort sortBy={sortBy} onSortBy={onSortBy} />
     </div>
   );
 }
@@ -114,7 +121,19 @@ function Item({ item, onDeleteItem, onUpdateItem }) {
   );
 }
 
+function Sort({ sortBy, onSortBy }) {
+  return (
+    <div className="actions">
+      <select value={sortBy} onChange={(e) => onSortBy(e)}>
+        <option value="input">Sort by input order.</option>
+        <option value="description">Sort by description.</option>
+        <option value="packed">Sort by packed status.</option>
+      </select>
+    </div>
+  );
+}
 function Stats({ items }) {
+  // Early return
   if (!items.length)
     return (
       <footer className="stats">
