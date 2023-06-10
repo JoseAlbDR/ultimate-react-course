@@ -8,9 +8,14 @@ export default function Step({ step, setStep }) {
   }
   return (
     <div className="info">
-      <button onClick={handlePreviousStep}>-</button>
-      <span className="stepCount">Step: {step}</span>
-      <button onClick={handleNextStep}>+</button>
+      <input
+        type="range"
+        min="1"
+        max="10"
+        value={step}
+        onChange={(e) => setStep(+e.target.value)}
+      />
+      <span>{step}</span>
     </div>
   );
 }
