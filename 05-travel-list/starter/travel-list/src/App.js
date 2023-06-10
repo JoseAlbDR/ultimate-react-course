@@ -115,14 +115,16 @@ function Item({ item, onDeleteItem, onUpdateItem }) {
 }
 
 function Stats({ items }) {
-  const packed = items.filter((item) => item.packed);
+  const packed = items.filter((item) => item.packed).length;
+  const numItems = items.length;
+  const percentage = Math.round((packed / numItems) * 100);
 
   return (
     <footer className="stats">
       <em>
-        💼 You have {items.length} items on your list, and you already packed{" "}
-        {packed.length ?? 0} ({Math.round((packed.length / items.length) * 100)}
-        %)
+        {percentage !== 100
+          ? `💼 You have ${numItems} items on your list, and you already packed ${packed} (${percentage}%)`
+          : `You got everything! Ready to go ✈`}
       </em>
     </footer>
   );
