@@ -29,9 +29,10 @@ export default function App() {
 
   // Clear all items
   function handleResetItems() {
-    if (window.confirm("Are you sure you want to delete al items?")) {
-      setItems([]);
-    }
+    if (items.length > 0)
+      if (window.confirm("Are you sure you want to delete al items?")) {
+        setItems([]);
+      }
   }
 
   return (
